@@ -1,0 +1,8 @@
+{
+  "short_name": "spotify-match",
+  "name": "Spotify Match",
+  "description": "Find friends who listen to the same music as you",
+  "start_url": ".",
+  "display": "standalone",
+  "background_color": "#fff"
+}
