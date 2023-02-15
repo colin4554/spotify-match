@@ -1,5 +1,6 @@
 import {Button, Icon, OpenOnSpotifyButton, Text} from 'common/components';
 import '../styles/_success.scss';
+import Accordion from "./Accordion";
 
 export default function Success({ friends, onReset }) {
 	return (
@@ -17,12 +18,15 @@ export default function Success({ friends, onReset }) {
 					{!friends.length && <Text className="mt-0">We couldn't find any matches among your friends :(</Text>}
 					{friends.map(friend => (
 						<div>
-							<h3 className="playlist__songs-header">
-								<a href={friend.userUrl}>{friend.userName}</a>
-							</h3>
-							{friend.matches.map(match => (
-								<TrackRow key={match.user} track={match} />
-								))}
+							<h2 className="playlist__songs-header">
+								<a href={friend.userUrl}>{friend.userName ?? "Your Liked Songs"}</a>
+							</h2>
+
+							<Accordion title={friend.matches.length + " songs matched"}>
+								{friend.matches.map(match => (
+									<TrackRow key={match.user} track={match} />
+									))}
+							</Accordion>
 						</div>
 					))}
 
